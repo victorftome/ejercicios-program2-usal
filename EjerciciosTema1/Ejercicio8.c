@@ -1,3 +1,21 @@
+/* ENUNCIADO
+Se desea calcular la edad y estatura máxima, mínima y media de la alineación inicial de un
+equipo de fútbol.
+Para ello se realizará un programa que pida por teclado el nombre, la edad y la estatura de los
+11 jugadores. Una vez introducidos los datos, el programa presentará en pantalla:
+    − La estatura y edad media del equipo.
+    − La edad mínima del equipo y el número de jugadores con su nombre y estatura que la
+    poseen.
+    − La estatura máxima del equipo y el número de jugadores con su nombre y edad que la
+    poseen.
+
+Análisis
+Se definirá una estructura llamada jugador, que contendrá los datos que recoge el programa
+de cada jugador del equipo: su nombre, su edad y su estatura. Posteriormente se definirá un
+vector, llamado equipo, de elementos de esta estructura. La dimensión de este vector se
+definirá en función de una constante DIM, cuyo valor se fija en 11 (según el enunciado del
+problema).
+*/
 #include <stdio.h>
 
 #define DIM 11

@@ -27,7 +27,7 @@ struct punto
     float x, y;
 };
 
-struct punto leerPunto(void);
+struct punto leerPunto();
 void printPunto(struct punto);
 float getDistance(struct punto, struct punto);
 struct punto getPuntoMedio(struct punto, struct punto);
@@ -39,17 +39,19 @@ int main()
     printf("Introduzca el primero punto\n");
     punto1 = leerPunto();
 
-    printf("Introduzca el segundo punto\n");
+    printf("\nIntroduzca el segundo punto\n");
     punto2 = leerPunto();
 
-    printf("Los puntos introducidos son\n");
+    printf("\nLos puntos introducidos son\n");
     printPunto(punto1);
     printPunto(punto2);
 
     printf("La distancia entre los puntos es de %.2f\n", getDistance(punto1, punto2));
-    printf("El punto medio de los puntos es el siguiente.\n");
+    printf("El punto medio entre los puntos es el siguiente.\n");
 
     printPunto(getPuntoMedio(punto1, punto2));
+
+    printf("\n");
 
     return 0;
 }

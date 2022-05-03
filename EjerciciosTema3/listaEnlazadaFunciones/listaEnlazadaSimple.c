@@ -112,6 +112,9 @@ int insertarAntesDeNodo(ListaEnlazadaRef raiz, tipoNodoRef pos, tipoInfoRef info
 
 	if (estaVacia(*raiz) || *raiz == pos || pos == NULL)
 	{
+		if (!estaVacia(*raiz))
+			nuevo->sig = *raiz;
+
 		*raiz = nuevo;
 
 		return 0;

@@ -529,3 +529,36 @@ int crearListaValoresAleatorios(ListaEnlazadaRef raiz, int numNodos)
 	}
 	return -1;
 }
+
+int eliminarRepetidos(ListaEnlazadaRef raiz)
+{
+	tipoNodoRef indice, aux, borrar;
+
+	if (*raiz == NULL)
+		return -1;
+
+	indice = *raiz;
+
+	while (indice->sig != NULL)
+	{
+		aux = indice;
+
+		while (aux->sig != NULL)
+		{
+			if (indice->info == aux->sig->info)
+			{
+				borrar = aux->sig;
+				aux->sig = aux->sig->sig;
+				free(borrar);
+			}
+			else
+			{
+				aux = aux->sig;
+			}
+		}
+
+		indice = indice->sig;
+	}
+
+	return 0;
+}

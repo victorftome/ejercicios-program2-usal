@@ -8,10 +8,10 @@
 
 int main(int argc, const char *argv[])
 {
-    char menu[] = "Listas enlazadas:\n A) Crear lista aleatoria\n B) Añadir al principio\n C) Añadir al final\n D) Insertar en posición por índice\n E) Devolver valor en posición por índice\n F) Eliminar al principio\n G) Eliminar al final\n H) Eliminar en posición por índice\n I) Crear lista ordenada\n J) Mostrar lista\n K) Liberar listas\n Q) Salir\n";
+    char menu[] = "Listas enlazadas:\n A) Crear lista aleatoria\n B) Añadir al principio\n C) Añadir al final\n D) Insertar en posición por índice\n E) Devolver valor en posición por índice\n F) Eliminar al principio\n G) Eliminar al final\n H) Eliminar en posición por índice\n I) Crear lista ordenada\n J) Mostrar lista\n K) Liberar listas\n L) Eliminar repetidos\n Q) Salir\n";
     ListaEnlazada raiz, raizOrdenada;
     tipoNodoRef aux;
-    int indice, i;
+    int indice, i, control;
     char opcion;
     tipoInfo temp = 1234,
              temp2 = 4321;
@@ -110,6 +110,19 @@ int main(int argc, const char *argv[])
         case 'K':
             printf("Liberación raiz: %d\n", liberarListaEnlazada(&raiz));
             printf("Liberación raizOrdenada: %d\n", liberarListaEnlazada(&raizOrdenada));
+            break;
+
+        case 'L':
+            control = eliminarRepetidos(&raiz);
+
+            if (!control)
+            {
+                printf("Mostrando lista sin repetidos: %d\n", control);
+                mostrarListaEnlazada(raiz);
+            }
+            else
+                printf("Mala matriz");
+
             break;
         default:
             printf("\n\nOpción incorrecta!\a\n\n");

@@ -565,3 +565,66 @@ int eliminarRepetidos(ListaEnlazadaRef raiz)
 
 	return 0;
 }
+
+/* Funciones de ficheros */
+int guardarListaEnlazadatexto(ListaEnlazada raiz, char *nombreFichero)
+{
+	FILE *fichero = NULL;
+
+	if (raiz == NULL || nombreFichero == NULL)
+		return -1;
+
+	if (NULL == (fichero = fopen(nombreFichero, "w")))
+		return -1;
+
+	while (raiz != NULL)
+	{
+		if (fprintf(fichero, "%d ", raiz->info) < 0)
+		{
+			fclose(fichero);
+			return -1;
+		}
+
+		raiz = raiz->sig;
+	}
+
+	fclose(fichero);
+
+	return 0;
+}
+
+int cargarListaEnlazadaTexto(ListaEnlazadaRef raiz, char *nombreFichero)
+{
+	FILE *fichero = NULL;
+	ListaEnlazada indice = NULL;
+	int num;
+
+	if (nombreFichero == NULL)
+		return -1;
+
+	if (NULL == (fichero = fopen(nombreFichero, "r")))
+		return -1;
+
+	while (fscanf(fichero, "%d%*c", &num) != EOF)
+	{
+		insertarOrdenada(raiz, &num);
+	}
+
+	if (!feof(fichero))
+	{
+		while (*raiz != NULL)
+		{
+			indice = *raiz;
+			*raiz = (*raiz)->sig;
+			free(indice);
+		}
+
+		fclose(fichero);
+
+		return -1;
+	}
+
+	fclose(fichero);
+
+	return 0;
+}
